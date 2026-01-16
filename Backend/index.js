@@ -15,6 +15,9 @@ app.use(cors())
 app.use(express.json())
 app.use('/api',NotesRouting)
 connectDB()
+app.get("/health", (req, res) => {
+  res.json({ status: "Backend OK" });
+});
 
 app.get('/',(req,res)=>{
     res.send("Hello World")

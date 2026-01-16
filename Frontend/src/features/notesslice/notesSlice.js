@@ -9,6 +9,8 @@ const initialState = {
 }
 export const fetchNotes =  createAsyncThunk("notes/fetchNotes", async(_,thunkAPI)=>{
     try{
+              console.log(import.meta.env.VITE_BACKEND_URL)
+
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/notes`)
         return res.data.notes
     }
