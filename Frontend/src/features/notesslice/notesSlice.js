@@ -9,7 +9,7 @@ const initialState = {
 }
 export const fetchNotes =  createAsyncThunk("notes/fetchNotes", async(_,thunkAPI)=>{
     try{
-        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/notes`)
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/notes`)
         return res.data.notes
     }
     catch(err){
@@ -20,7 +20,7 @@ export const fetchNotes =  createAsyncThunk("notes/fetchNotes", async(_,thunkAPI
 })
 export const createNote = createAsyncThunk("notes/createNote",async(noteData,thunkAPI)=>{
     try{
-        const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/notes`,noteData)
+        const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/notes`,noteData)
         toast.success("Note created")
         return res.data.note
     }
@@ -33,7 +33,7 @@ export const createNote = createAsyncThunk("notes/createNote",async(noteData,thu
 })
 export const updateNote = createAsyncThunk("notes/updateNote",async({id,data},thunkAPI)=>{
     try{
-        const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/notes/${id}`,data)
+        const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/notes/${id}`,data)
         toast.success("Note Updated")
         return res.data.note
     }
@@ -46,7 +46,7 @@ export const updateNote = createAsyncThunk("notes/updateNote",async({id,data},th
 })
 export const deleteNote = createAsyncThunk("notes/deleteNote",async(id,thunkAPI)=>{
     try{
-        const res = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/notes/${id}`)
+        const res = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/notes/${id}`)
         toast.success("Note Delted")
         return id 
     }
